@@ -12,6 +12,7 @@ import { Registrarse } from './pages/Registrarse/Registrarse.jsx';
 import { Reservas } from './pages/Reservas/Reservas';
 import { Contacto } from './pages/Contacto/Contacto';
 import { About } from './pages/About/About';
+import { ToDoProd } from './pages/Ad/ToDoProd';
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
         <Route path='/reservas' element={<Reservas/>}/>
         <Route path='/contacto' element={<Contacto/>}/>
         <Route path='/about' element={<About/>}/>
-      </Routes>
+        <Route path="/todoproduct" element={<ToDoProd />} />
+      </Routes> 
     </div>
       
       <Footer/>
