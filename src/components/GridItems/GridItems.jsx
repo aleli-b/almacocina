@@ -1,14 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { AboutSection } from '../AboutSection/AboutSection'
-const imgHome = require.context('../../assets/img/homeImg',true)
+const imgHome = require.context('../../assets/img/homeImg', true)
 
 export const GridItems = () => {
 
 
     return ( 
     <>
-    
-        <div className="grid-item tall" >
+                <div className="grid-item tall" >
                     <img src={imgHome(`./img-home-1.jpg`)}alt="" />
                 </div>
                 <div className="grid-item">

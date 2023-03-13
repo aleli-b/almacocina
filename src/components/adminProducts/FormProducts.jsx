@@ -1,6 +1,9 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Table } from "react-bootstrap";
+// import Button from "react-bootstrap/Button";
+
 import Form from "react-bootstrap/Form";
+
 
 const FormProducts = (props) => {
 
@@ -23,7 +26,8 @@ const FormProducts = (props) => {
     <div>
 
     <Form onSubmit={cargarProd} striped bordered hover>
-    <Form.Group className="mb-3" controlId="prodDetail">
+    <Form.Group className="mb-3 " controlId="prodDetail">
+    <Table variant="dark">
       <thead>
         <tr>
           <th>Nombre Producto</th>
@@ -43,9 +47,8 @@ const FormProducts = (props) => {
           <td>1500</td>
         </tr>
       </tbody>
+    </Table>
       </Form.Group>
-      <Button variant="primary" type="submit">
-      </Button>
     </Form>
     </div>
   );

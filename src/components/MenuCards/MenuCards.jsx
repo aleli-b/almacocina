@@ -8,7 +8,7 @@ import axios from 'axios';
 export const MenuCards = () => {
     const [open, setOpen] = useState(false);
     const [users, setUsers] = useState([]);
-    useEffect(() => { getUsers() }, [])
+    useEffect(() => { getUsers() }, []);
 
     const handleClick = (id) => {
         setOpen(open => ({

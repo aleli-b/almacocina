@@ -1,0 +1,11 @@
+p{
+    font-size: 2rem;
+}
+
+.button:hover {
+   background-color: rgba(199, 148, 85, 0.979);
+   border-radius: 10px;
+   border: solid 1px black;
+}
+
+
