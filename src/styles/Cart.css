@@ -1,0 +1,16 @@
+.cart-img{
+    height: 200px;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(214, 97, 84);
+    transition: 0.5s;
+    border-radius: 10%;
+}
+
+.link:hover{
+    color: brown;
+    background-color: rgb(240, 176, 176);
+    transition: 1s;
+}

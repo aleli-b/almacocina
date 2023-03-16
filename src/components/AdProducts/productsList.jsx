@@ -14,7 +14,6 @@ export const ProductList = () => {
         const products = await axios.get('http://localhost:3001/products');
         setProducts(products.data);
     }
-
     
     async function delProducts(id) {
         if (window.confirm(`Estás por eliminar el producto ${id}`)){
@@ -38,10 +37,10 @@ export const ProductList = () => {
                 </thead>
                 <tbody>
                     {
-                        products?.map(product =>
+                        products?.map((product, i) =>
                         (
                             <tr key={product._id}>
-                                <td>1</td>
+                                <th>{i + 1}</th>
                                 <td>{product.name}</td>
                                 <td>{product.info}</td>
                                 <td>{product.url}</td>

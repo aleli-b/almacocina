@@ -3,9 +3,11 @@ import '../../styles/Carta.css';
 import { BsFillCartFill, BsFillTrashFill } from "react-icons/bs"
 import { Button, Card, Container, Row, Col, Fade } from 'react-bootstrap';
 import axios from 'axios';
+import { useCart } from '../context/Cart';
 
 
 export const MenuCards = () => {
+    const { addProduct } = useCart();
     const [open, setOpen] = useState(false);
     const [users, setUsers] = useState([]);
     useEffect(() => { getUsers() }, []);
@@ -51,7 +53,7 @@ export const MenuCards = () => {
                                             >
                                                 + info
                                             </Button>
-                                            <Button className='cardButton'>
+                                            <Button className='cardButton' onClick={() => addProduct(user)}>
                                                 <BsFillCartFill />
                                             </Button>
                                             <Button className='cardButton' onClick={() => delUsers(user._id)} >

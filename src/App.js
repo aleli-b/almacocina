@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 import './styles/GridHome.css'
 import { Footer } from './layout/Footer/Footer';
@@ -13,28 +13,39 @@ import { Reservas } from './pages/Reservas/Reservas';
 import { Contacto } from './pages/Contacto/Contacto';
 import { About } from './pages/About/About';
 import { ToDoProd } from './pages/Ad/ToDoProd';
+import CartProvider from './components/context/Cart';
+import YourCart from './pages/Cart/Cart';
+
+
+
+
+
+
 
 function App() {
 
   return (
     <>
-      <Header/>
-
-    <div className="main-container"> 
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/registro' element={<Registrarse/>}/>
-        <Route path='/login' element={<Login/>}/> 
-        <Route path='/pedir' element={<PedirComida/>}/>
-        <Route path='/carta' element={<Carta/>}/>
-        <Route path='/reservas' element={<Reservas/>}/>
-        <Route path='/contacto' element={<Contacto/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path="/todoproduct" element={<ToDoProd />} />
-      </Routes> 
-    </div>
-      
-      <Footer/>
+      <CartProvider>
+        <Router>
+          <div className="main-container">
+            <Header />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/registro' element={<Registrarse />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/pedir' element={<PedirComida />} />
+              <Route path='/carta' element={<Carta />} />
+              <Route path='/reservas' element={<Reservas />} />
+              <Route path='/contacto' element={<Contacto />} />
+              <Route path='/about' element={<About />} />
+              <Route path="/todoproduct" element={<ToDoProd />} />
+              <Route path='/your-cart' element={<YourCart />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </CartProvider>
     </>
   );
 }
