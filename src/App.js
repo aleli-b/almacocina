@@ -15,6 +15,7 @@ import { About } from './pages/About/About';
 import { ToDoProd } from './pages/Ad/ToDoProd';
 import CartProvider from './components/context/Cart';
 import YourCart from './pages/Cart/Cart';
+import { AuthProvider } from './components/context/AuthContext';
 
 
 
@@ -26,26 +27,28 @@ function App() {
 
   return (
     <>
-      <CartProvider>
-        <Router>
-          <div className="main-container">
-            <Header />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/registro' element={<Registrarse />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/pedir' element={<PedirComida />} />
-              <Route path='/carta' element={<Carta />} />
-              <Route path='/reservas' element={<Reservas />} />
-              <Route path='/contacto' element={<Contacto />} />
-              <Route path='/about' element={<About />} />
-              <Route path="/todoproduct" element={<ToDoProd />} />
-              <Route path='/your-cart' element={<YourCart />} />
-            </Routes>
-            <Footer />
-          </div>
-        </Router>
-      </CartProvider>
+      <Router>
+        <AuthProvider>
+          <CartProvider>
+            <div className="main-container">
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/registro' element={<Registrarse />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/pedir' element={<PedirComida />} />
+                <Route path='/carta' element={<Carta />} />
+                <Route path='/reservas' element={<Reservas />} />
+                <Route path='/contacto' element={<Contacto />} />
+                <Route path='/about' element={<About />} />
+                <Route path="/todoproduct" element={<ToDoProd />} />
+                <Route path='/your-cart' element={<YourCart />} />
+              </Routes>
+              <Footer />
+            </div>
+          </CartProvider>
+        </AuthProvider>
+      </Router>
     </>
   );
 }

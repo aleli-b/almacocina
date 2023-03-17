@@ -6,22 +6,23 @@ const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-    const [token, setToken] = useState(JSON.parse(localStorage.getItem('token')));
-    const navigate = useNavigate()
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user'))) || [];
+    const [token, setToken] = useState(JSON.parse(localStorage.getItem('token'))) || [];
+    const navigate = useNavigate();
 
     const  login = async (data) => {
         try {
-            const loginData = await axios.post(`http://localhost:3200/login`, data);
-
-            localStorage.setItem('token', JSON.stringify(loginData.data.token))
+            const loginData = await axios.post(`http://localhost:3001/login`, data);
+            console.log(loginData)
+            localStorage.setItem('token', JSON.stringify(loginData.data.token));
             localStorage.setItem('user', JSON.stringify(loginData.data.user));
             setUser(loginData.data.user)
-            setToken(loginData.data.token);
+            setToken(loginData.data.token); 
             alert(`Login correcto`);
-            navigate('/')
+            navigate('/');
         } catch(error) {
             if(error.tokenInvalid) logout()
+            console.log(error)
         }
     }
 
@@ -37,7 +38,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         user,
-        token
+        token 
     }
 
     return <AuthContext.Provider value={auth}>{ children }</AuthContext.Provider>

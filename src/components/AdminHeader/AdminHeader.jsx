@@ -26,24 +26,6 @@ export const AdminHeader = ({ sendProduct }) => {
                     <Modal.Title>Modal title</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <Form onSubmit={handleSubmit(sendProduct)}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Nombre del Producto</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Nombre"
-                                autoFocus
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Breve descripcion del producto</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
-                        </Form.Group>
-                        <Button type='submit' variant="primary">Agregar</Button>
-                    </Form> */}
                     <form onSubmit={handleSubmit(sendProduct)}>
                         <input type="text" placeholder="Nombre del Producto" {...register("name", { required: true, minLength: 3, maxLength: 24 })} /> {errors.name && <p>Error en el nombre</p>}
                         <input type="text" placeholder='URL de la imagen' {...register("url", { required: true })} />{errors.url && <p>Error en la URL</p>}

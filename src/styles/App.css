@@ -89,12 +89,3 @@ body{
     width: 350px;
 }
 
-.links-nav{
-    color: #000;
-    transition: all 5s ease-in-out;
-}
-
-.links-nav:hover{
-    background-color: rgb(131, 66, 66);
-}
-

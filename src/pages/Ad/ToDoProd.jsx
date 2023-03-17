@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 // import FormProducts from '../../components/adminProducts/FormProducts';
-import { ProductList } from '../../components/AdProducts/productsList';
+import { ProductList } from '../../components/AdminList/productsList';
 import { AdminHeader } from '../../components/AdminHeader/AdminHeader';
 import '../../styles/Admin.css'
 import axios from 'axios';
