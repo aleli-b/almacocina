@@ -4,6 +4,7 @@ import { HorariosFooter } from '../../components/HorariosFooter/HorariosFooter';
 import { Redes } from '../../components/Redes/Redes';
 import { LinksFooter } from '../../components/LinksFooter/LinksFooter';
 import { Col, Container, Row } from 'react-bootstrap';
+import './Footer.css'
 
 export const Footer = () => {
   return (

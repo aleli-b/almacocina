@@ -7,7 +7,7 @@ import '../../styles/Cart.css';
 const YourCart = () => {
   const { cart, addProduct, removeProduct, clearCart } = useCart();
   return (
-    <div className='my-5'>
+    <div className='cart '>
       {cart.length > 0 &&
         <>
           <Table striped>
