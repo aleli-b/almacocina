@@ -17,6 +17,7 @@ import { UserAdmin } from './pages/UserAdmin/UserAdmin'
 import CartProvider from './components/context/Cart';
 import YourCart from './pages/Cart/Cart';
 import { AuthProvider } from './components/context/AuthContext';
+import { AdminRoute } from './components/guard/AdminRoute';
 
 
 
@@ -42,8 +43,8 @@ function App() {
                 <Route path='/reservas' element={<Reservas />} />
                 <Route path='/contacto' element={<Contacto />} />
                 <Route path='/about' element={<About />} />
-                <Route path="/productadmin" element={<ToDoProd />} />
-                <Route path='/useradmin' element={<UserAdmin />} />
+                <Route path="/productadmin" element={<AdminRoute><ToDoProd /> </AdminRoute>} />
+                <Route path='/useradmin' element={<AdminRoute> <UserAdmin /> </AdminRoute>} />
                 <Route path='/your-cart' element={<YourCart />} />
               </Routes>
               <Footer />
