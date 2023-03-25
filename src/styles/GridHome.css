@@ -66,6 +66,7 @@
 .about-main{
     color: white;
     background-color: #3a111c;
+    grid-column: span 3;
 }
 .link-registro{
     color: #fff;

@@ -5,9 +5,7 @@ export const Home = () => {
   return (
 <>
     <div>
-
       <GridHome/>
-
     </div>
 </>
       

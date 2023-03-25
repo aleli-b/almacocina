@@ -37,11 +37,8 @@ export const GridItems = () => {
                 <div className="grid-item ">
                 <img src={imgHome(`./img-home-5.jpg`)} alt="" />
                 </div>
-                <div className="grid-item ">
+                <div className="grid-item wide ">
                 <img src={imgHome(`./img-home-6.jpg`)} alt="" />
-                </div>
-                <div className="grid-item wide about-main links-item">
-                    <AboutSection/>
                 </div>
                 <div className="grid-item links-item link-registro-container">
                 <NavLink href="/registro" to='registro' className='link-registrarse-container'>
@@ -56,6 +53,9 @@ export const GridItems = () => {
                 </div>
                 <div className="grid-item">
                 <img src={imgHome(`./img-home-8.jpg`)} alt="" />
+                </div>
+                <div className="grid-item wide about-main links-item">
+                    <AboutSection/>
                 </div>
                 
     </>

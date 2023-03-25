@@ -1,26 +1,27 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 
 
-export const ProductList = () => {
-    const [products, setProducts] = useState();
-    useEffect(() => { getProducts() }, []);
+export const ProductList = ({ products, getProducts }) => {
+    // const [products, setProducts] = useState();
+    // useEffect(() => { getProducts() }, []);
 
-    const getProducts = async () => {
-        const products = await axios.get('http://localhost:3001/products');
-        setProducts(products.data);
-    }
+    // const getProducts = async () => {
+    //     const products = await axios.get('http://localhost:3001/products');
+    //     setProducts(products.data);
+    // }
     
     async function delProducts(id) {
-        if (window.confirm(`Estás por eliminar el producto ${id}`)){
+        // if (window.confirm(`Estás por eliminar el producto ${id}`)){
             await axios.delete(`http://localhost:3001/products/${id}`);
-            const prods = await axios.get(`http://localhost:3001/products`);
-            setProducts(prods.data)
-        }
+            // const prods = await axios.get(`http://localhost:3001/products`);
+            // setProducts(prods.data)
+            getProducts();
+        // }
     }
 
     return (

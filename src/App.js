@@ -12,7 +12,8 @@ import { Registrarse } from './pages/Registrarse/Registrarse.jsx';
 import { Reservas } from './pages/Reservas/Reservas';
 import { Contacto } from './pages/Contacto/Contacto';
 import { About } from './pages/About/About';
-import { ToDoProd } from './pages/Ad/ToDoProd';
+import { ToDoProd } from './pages/ProductAdmin/ToDoProd';
+import { UserAdmin } from './pages/UserAdmin/UserAdmin'
 import CartProvider from './components/context/Cart';
 import YourCart from './pages/Cart/Cart';
 import { AuthProvider } from './components/context/AuthContext';
@@ -41,7 +42,8 @@ function App() {
                 <Route path='/reservas' element={<Reservas />} />
                 <Route path='/contacto' element={<Contacto />} />
                 <Route path='/about' element={<About />} />
-                <Route path="/todoproduct" element={<ToDoProd />} />
+                <Route path="/productadmin" element={<ToDoProd />} />
+                <Route path='/useradmin' element={<UserAdmin />} />
                 <Route path='/your-cart' element={<YourCart />} />
               </Routes>
               <Footer />

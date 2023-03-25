@@ -4,10 +4,8 @@ import {GridItems} from '../GridItems/GridItems'
 export const GridHome = () => {
 
     return (
-        <Container fluid>
-            <div className='grid-container' >
+        <Container fluid className='grid-container'>
                 <GridItems/>
-            </div>
         </Container>
     )
 }
