@@ -4,24 +4,15 @@ import { Button, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { EditProductHeader } from '../ProductAdminHeader/EditProductHeader';
 
+export const ProductList = ({ products, getProducts, editProducts }) => {
+    const prod = products;
+    const editProd = editProducts;
 
-export const ProductList = ({ products, getProducts }) => {
-    // const [products, setProducts] = useState();
-    // useEffect(() => { getProducts() }, []);
-
-    // const getProducts = async () => {
-    //     const products = await axios.get('http://localhost:3001/products');
-    //     setProducts(products.data);
-    // }
-    
     async function delProducts(id) {
-        // if (window.confirm(`Estás por eliminar el producto ${id}`)){
-            await axios.delete(`http://localhost:3001/products/${id}`);
-            // const prods = await axios.get(`http://localhost:3001/products`);
-            // setProducts(prods.data)
-            getProducts();
-        // }
+        await axios.delete(`http://localhost:3001/products/${id}`);
+        getProducts();
     }
 
     return (
@@ -46,6 +37,7 @@ export const ProductList = ({ products, getProducts }) => {
                                 <td>{product.info}</td>
                                 <td>{product.url}</td>
                                 <td><Button className='bg-danger' onClick={() => delProducts(product._id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></Button></td>
+                                <td><EditProductHeader products={prod} editProducts={editProd} ></EditProductHeader></td>
                             </tr>
                         ))}
                 </tbody>

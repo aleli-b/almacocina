@@ -31,24 +31,16 @@ export const AdminHeader = ({ editUser, user }) => {
                     <form onSubmit={handleSubmit(editUserLocal)}>
                         <div className="form-group">
                             <label htmlFor="exampleInputText">Nombre</label>
-                            <input defaultValue={user.name} type="text" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="Nombre del Producto" {...register("name", { required: true, minLength: 3, maxLength: 24 })} /> {errors.name && <p>Error en el nombre</p>}
-                        </div>
-                        {/* <div className="form-group">
-                            <label htmlFor="exampleInputText">URL</label>
-                            <input type="text" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="URL de la Imagen" {...register("url", { required: true })} />{errors.url && <p>Error en la URL</p>}
+                            <input defaultValue={user.name} type="text" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="Nombre" {...register("name", { required: true, minLength: 3, maxLength: 8 })} /> {errors.name && <p>Error en el nombre</p>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleInputText">Precio</label>
-                            <input type="number" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="Precio del Producto" {...register("price", { required: true })} /> {errors.price && <p>Error en el precio</p>}
+                            <label htmlFor="exampleInputText">Apellido</label>
+                            <input defaultValue={user.lastName} type="text" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="Apellido" {...register("lastName", { required: true, minLength: 3, maxLength: 10 })} /> {errors.lastName && <p>Error en el apellido</p>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleInputText">Descripción</label>
-                            <textarea className="form-control" id="exampleInputTextarea" aria-describedby="nameText" placeholder="Descripción del Producto" {...register("description", { required: true, minLength: 30 })} /> {errors.description && <p>Error en la descripcion</p>}                            
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputText">Info</label>
-                            <textarea className="form-control" id="exampleInputTextarea" aria-describedby="nameText" placeholder="Más Información" {...register("info", { required: true, minLength: 30 })} /> {errors.info && <p>Error en la info</p>}
-                        </div>                         */}
+                            <label htmlFor="exampleInputText">Email</label>
+                            <input defaultValue={user.email} type="text" className="form-control" id="exampleInputText" aria-describedby="nameText" placeholder="Mail" {...register("email", { required: true, minLength: 8, maxLength: 30 })} /> {errors.email && <p>Error en el mail</p>}
+                        </div>                                               
                         <button type="submit" className="btn btn-primary">Submit</button>                        
                     </form>
                 </Modal.Body>

@@ -31,12 +31,27 @@ export const ToDoProd = () => {
     }
   }
 
+  const editProducts = async (data, id) => {
+    try {
+      const prodData = await axios.put(`http://localhost:3001/products/${id}`, data);
+      Swal.fire({
+        title: "Buen trabajo!",
+        text: "El producto ha sido agregado correctamente!",
+        icon: "success",
+      });
+      const products = await axios.get(`http://localhost:3001/products`);
+      setProducts(products.data);
+      console.log(prodData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
       <Container fluid>
         <AdminHeader sendProduct={sendProduct} getProducts={getProducts}></AdminHeader>
-        <ProductList products={products} getProducts={getProducts} />
+        <ProductList products={products} getProducts={getProducts} editProducts={editProducts} />
       </Container>
     </>
   )
