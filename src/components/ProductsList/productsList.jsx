@@ -7,7 +7,6 @@ import axios from "axios";
 import { EditProductHeader } from '../ProductAdminHeader/EditProductHeader';
 
 export const ProductList = ({ products, getProducts, editProducts }) => {
-    const prod = products;
     const editProd = editProducts;
 
     async function delProducts(id) {
@@ -37,7 +36,7 @@ export const ProductList = ({ products, getProducts, editProducts }) => {
                                 <td>{product.info}</td>
                                 <td>{product.url}</td>
                                 <td><Button className='bg-danger' onClick={() => delProducts(product._id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></Button></td>
-                                <td><EditProductHeader products={prod} editProducts={editProd} ></EditProductHeader></td>
+                                <td><EditProductHeader product={product} editProducts={editProd} ></EditProductHeader></td>
                             </tr>
                         ))}
                 </tbody>

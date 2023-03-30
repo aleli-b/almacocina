@@ -8,7 +8,7 @@ export const GridItems = () => {
     return ( 
     <>
                 <div className="grid-item tall" >
-                    <img src={imgHome(`./img-home-1.jpg`)}alt="" />
+                    <img src={imgHome(`./img-home-1.jpg`)}alt="" className='img-1'/>
                 </div>
                 <div className="grid-item">
                     <img src={imgHome(`./img-home-1.jpg`)} alt="" />

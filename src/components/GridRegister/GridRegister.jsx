@@ -7,50 +7,14 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router-dom';
-
-
-// //aqui puso la url como una constante pero esta en el home
-
-// const [users,setUsers] = useState([]);
-
-// useEffect(()=> {
-//   addUsers();
-// },[])
-
-// async function addUsers(){
-//   try {
-//     const userDB = await axios.post(`${URL}/users`);
-//     console.log(userDB.response)
-//   } catch (error) {
-//     console.log(error.response)
-//   }
-// }
-
-
-
 
 export const GridRegister = () => {
 
-  //HOOKS 
   const [name, setName] = useState('')
   const [lastname, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
-  //CREO UNA VARIABLE PARA CREAR USUARIO(SGUN VDEO YT)
-  // function AddNewUsers(){
-  //   var usuario = {
-  //     name: name,
-  //     lastname: lastname,
-  //     email: email,
-  //     password: password,
-  //     confirmPassword: confirmPassword
-  //   }
-  // }
-
-
 
   async function AddNewUsers(evt) {
     try {
@@ -102,11 +66,16 @@ export const GridRegister = () => {
   return (
     <Container fluid >
       <Row>
+      <Col>
         <h1 className="titleRegister offset-2"> Registrate </h1>
-        {/* <Col sm={8} className = "formRegistro"> */}
-
-        {/* //FORMULARIO DE REGISTRO// */}
-        <Form className="formRegisto w-50 p-4" onSubmit={AddNewUsers} >
+      </Col>
+      <Col>
+        <h1 className="titleRegister offset-2"> A tener en cuenta </h1>
+      </Col>
+      </Row>
+      <Row>
+      <Col sm={6} className="formRegisto w-50 p-4">
+        <Form  onSubmit={AddNewUsers} >
           <Row>
             <Col xs={12} lg={6}>
               <Form.Group className="mb-3" controlId="formBasicName">
@@ -136,19 +105,17 @@ export const GridRegister = () => {
             <Form.Control value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value) }} type="password" placeholder="Confirme su contraseña" name='confirmPassword' maxLength={10} required />
           </Form.Group>
 
-          <Button className="button-reg" variant="outline-dark" type="submit">
+          <small id="emailHelp" className="form-text text-muted">¿Ya tienes usuario? Ingresa <a href='/login'>aquí</a></small>
+          <br />
+
+          <Button className="button-reg mt-3" variant="outline-dark" type="submit">
             Registrarme
           </Button>
-          <NavLink href='/login' to='/login'>
-            <p>Ya tienes usuario?
-              <br />
-                Ingresar
-            </p>
-          </NavLink>
         </Form>
+        </Col>
 
         {/* </Col> */}
-        <Col sm={6} className="itemsRegistro">
+        <Col sm={6} className="itemsRegistro mt-5 pt-3">
 
           <Row className='rowItems'>
 

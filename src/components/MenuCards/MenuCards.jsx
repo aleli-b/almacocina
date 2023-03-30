@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/Carta.css';
-import { BsFillCartFill, BsFillTrashFill } from "react-icons/bs"
+import { BsFillCartFill } from "react-icons/bs"
 import { Button, Card, Container, Row, Col, Fade } from 'react-bootstrap';
 import axios from 'axios';
 import { useCart } from '../context/Cart';
-
+import { useAuth } from '../context/AuthContext';
 
 export const MenuCards = () => {
     const { addProduct } = useCart();
     const [open, setOpen] = useState(false);
-    const [users, setUsers] = useState([]);
-    useEffect(() => { getUsers() }, []);
+    const [products, setProducts] = useState([]);
+    useEffect(() => { getProducts() }, []);
+    const auth = useAuth();
 
     const handleClick = (id) => {
         setOpen(open => ({
@@ -19,15 +20,9 @@ export const MenuCards = () => {
         }))
     }
 
-    async function getUsers() {
+    async function getProducts() {
         const users = await axios.get('http://localhost:3001/products');
-        setUsers(users.data);
-    }
-
-    async function delUsers(id) {
-        await axios.delete(`http://localhost:3001/products/${id}`);
-        const prods = await axios.get('http://localhost:3001/products');
-        setUsers(prods.data);
+        setProducts(users.data);
     }
 
     return (
@@ -36,35 +31,38 @@ export const MenuCards = () => {
                 <Row>
                     <Col lg={12} md={6} className="d-flex flex-row flex-wrap justify-content-center gap-3">
                         {
-                            users.map(user => (
-                                <Card style={{ width: '18rem'}} key={user._id} className="menuCard">
-                                    <Card.Img variant="top" src={user.url} className="cardImg" />
+                            products.map(product => (
+                                <Card style={{ width: '18rem' }} key={product._id} className="menuCard">
+                                    <Card.Img variant="top" src={product.url} className="cardImg" />
                                     <Card.Body className='cardBody'>
-                                        <Card.Title>{user.name}</Card.Title>
+                                        <Card.Title>{product.name}</Card.Title>
                                         <Card.Text>
-                                            {user.description}
+                                            {product.description}
                                         </Card.Text>
                                         <Container fluid className='d-flex justify-content-between mb-2'>
                                             <Button
-                                                onClick={() => handleClick(user._id)}
+                                                onClick={() => handleClick(product._id)}
                                                 aria-controls="example-fade-text"
-                                                aria-expanded={open[user._id]}
+                                                aria-expanded={open[product._id]}
                                                 className="cardButton"
                                             >
                                                 + info
                                             </Button>
-                                            <Button className='cardButton' onClick={() => addProduct(user)}>
-                                                <BsFillCartFill />
-                                            </Button>
-                                            <Button className='cardButton' onClick={() => delUsers(user._id)} >
-                                                <BsFillTrashFill />
-                                            </Button>
+                                            {auth.user
+                                                ?
+                                                <Button className='cardButton' onClick={() => addProduct(product)}>
+                                                    <BsFillCartFill />
+                                                </Button>
+                                                :
+                                                <Button className='cardButton' disabled onClick={() => addProduct(product)}>
+                                                    <BsFillCartFill />
+                                                </Button>}                                        
                                         </Container>
                                         <div style={{ minHeight: '150px' }}>
-                                            <Fade in={open[user._id]} dimension="width">
+                                            <Fade in={open[product._id]} dimension="width">
                                                 <div id="example-fade-text">
                                                     <Card body >
-                                                        {user.info}
+                                                        {product.info}
                                                     </Card>
                                                 </div>
                                             </Fade>

@@ -1,3 +1,4 @@
+
 .grid-container {
     grid-auto-flow: dense;
     display: grid;
@@ -27,7 +28,6 @@
 
 .links-item a{
     text-decoration: none;
-
 }
 
 .wide {
@@ -80,4 +80,27 @@
     color: white;
     background-color: #3a111c;
     border-bottom: solid 1px #fff;
+}
+
+@media (max-width: 800px){ 
+    *{
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .grid-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-item{
+        width: 400px;
+    }
+    .links-item{
+        height: 100px;
+    }
+    .img-1{
+        display: none;
+    }
+    .about-main{
+        display: none;
+    }
 }
