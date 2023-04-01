@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { EditProductHeader } from '../ProductAdminHeader/EditProductHeader';
+import './style.css'
 
 export const ProductList = ({ products, getProducts, editProducts }) => {
     const editProd = editProducts;
@@ -22,8 +23,10 @@ export const ProductList = ({ products, getProducts, editProducts }) => {
                         <th>#</th>
                         <th>Nombre del Producto</th>
                         <th>Info</th>
+                        <th>Descripción</th>
                         <th>URL</th>
                         <th>Eliminar</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,8 +37,9 @@ export const ProductList = ({ products, getProducts, editProducts }) => {
                                 <th>{i + 1}</th>
                                 <td>{product.name}</td>
                                 <td>{product.info}</td>
-                                <td>{product.url}</td>
-                                <td><Button className='bg-danger' onClick={() => delProducts(product._id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></Button></td>
+                                <td>{product.description}</td>
+                                <td>{product.url}</td>                                
+                                <td><Button className='bg-danger' onClick={() => delProducts(product._id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></Button></td>                                
                                 <td><EditProductHeader product={product} editProducts={editProd} ></EditProductHeader></td>
                             </tr>
                         ))}

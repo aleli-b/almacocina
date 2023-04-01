@@ -8,6 +8,7 @@ import '../../styles/Cart.css';
 const YourCart = () => {
   const { cart, addProduct, removeProduct, clearCart } = useCart();
   const auth = useAuth();
+  console.log(cart)
   return (
     <div className='cart '>
       {cart.length > 0 && auth.user &&
@@ -48,7 +49,9 @@ const YourCart = () => {
               </tr>
             </tbody>
           </Table>
-          <Button variant='danger' className='m-3' onClick={() => clearCart()}>Limpiar carrito</Button>
+          <div>
+            <Button variant='danger' className='m-3' onClick={() => clearCart()}>Limpiar carrito</Button>
+          </div>
         </>}
       {!auth.user && <p className='text-center'>Inicia sesión a través de la página de <Link className='link px-2 pb-1' to="/login">login</Link> y vuelve a intentarlo</p>}
       {cart.length === 0 && <p className='text-center'>El carrito está vacío, por favor añade productos a través de la <Link className='link px-2 pb-1' to="/carta">carta</Link> y vuelve a intentarlo</p>}
