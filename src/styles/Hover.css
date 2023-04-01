@@ -1,0 +1,56 @@
+
+.imagen-hover {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .texto-hover {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration-color: aqua;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .imagen-hover:hover .texto-hover {
+    opacity: 1;
+    visibility: visible ;
+  }
+  
+
+  
+  .imagen-hover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+    
+  }
+  
+  .imagen-hover:hover img{
+    transform: rotateY(180deg);
+    /* background-color: wheat; */
+    background: rgba(0, 0, 0, .4);
+    opacity: 0;
+    opacity: 0.15;
+    filter: drop-shadow(-20px 125px 15px rgb(234, 150, 5));
+  }
+  
+  .icons {
+    size: 200px;
+    width: 50px;
+    min-width: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .icons a:hover {
+    transform: scale(1.15);
+    transition-duration: 0.5s;
+    color: black;
+  }
