@@ -4,6 +4,7 @@ import './styles/GridHome.css'
 import { Footer } from './layout/Footer/Footer';
 import { Header } from './layout/Header/Header';
 import { Home } from './pages/Home/Home';
+import { Error } from './pages/Error/Error'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carta } from './pages/Carta/Carta';
 import { Login } from './pages/Login/Login';
@@ -35,6 +36,7 @@ function App() {
             <div className="main-container">
               <Header />
               <Routes>
+                <Route path='*' element={<Error />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/registro' element={<Registrarse />} />
                 <Route path='/login' element={<Login />} />
