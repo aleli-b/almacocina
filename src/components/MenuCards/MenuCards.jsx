@@ -13,43 +13,35 @@ export const MenuCards = () => {
     useEffect(() => { getProducts() }, []);
     const auth = useAuth();
 
-    // const handleClick = (id) => {
-    //     setOpen(open => ({
-    //         ...open,
-    //         [id]: !open[id],
-    //     }))
-    // }
-
     async function getProducts() {
         const users = await axios.get('http://localhost:3001/products');
         setProducts(users.data);
     };
-    
 
     return (
-    <>
-        <div>
-                  <Container>
-        <h1 className=" display-4  text-danger  text-center">
-          {' '}
-          Nuestra Carta
-        </h1>
-        <hr />
+        <>
+            <div>
+                <Container>
+                    <h1 className=" display-4  text-danger  text-center">
+                        {' '}
+                        Nuestra Carta
+                    </h1>
+                    <hr />
 
-        <h5 className="text-center p-4 fst-italic ">
-          "Garantía en el mundo de la gastronomia, con el mejor servicio"
-        </h5>
-      </Container>
-            <Container fluid>
-                <Row>
-                    <Col lg={12} md={6} className="d-flex flex-row flex-wrap justify-content-center gap-3">
+                    <h5 className="text-center p-4 fst-italic ">
+                        "Garantía en el mundo de la gastronomia, con el mejor servicio"
+                    </h5>
+                </Container>
+                <Container fluid>
+                    <Row>
+                        <Col lg={12} md={6} className="d-flex flex-row flex-wrap justify-content-center gap-3">
                             {products.map(product => (
                                 <Card style={{ width: '18rem' }} key={product._id} className="menuCard ">
                                     <Card.Img variant="top" src={product.url} className="cardImg shadow" />
                                     <Card.Body className='cardBody shadow'>
                                         <Card.Title>{product.name}</Card.Title>
                                         <Card.Text>
-                                            <h4>${product.price}</h4>
+                                            {product.price}
                                         </Card.Text>
                                         <Container fluid className='d-flex justify-content-between '>
                                             <ModalInfoCArd product={product}>
@@ -63,24 +55,24 @@ export const MenuCards = () => {
                                                 :
                                                 <Button className='cardButton' disabled onClick={() => addProduct(product)}>
                                                     <BsFillCartFill />
-                                                </Button>}                                        
+                                                </Button>}
                                         </Container>
                                     </Card.Body>
-                                  </Card>
-                                
-                            )  )}
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-        
-          </>
+                                </Card>
+
+                            ))}
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+
+        </>
     )
 
-         
-            
-             
-            
+
+
+
+
 
 
 }

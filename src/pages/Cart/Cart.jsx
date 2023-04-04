@@ -1,14 +1,32 @@
 import React from 'react'
 import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../components/context/Cart';
 import { useAuth } from '../../components/context/AuthContext';
 import '../../styles/Cart.css';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const YourCart = () => {
   const { cart, addProduct, removeProduct, clearCart } = useCart();
   const auth = useAuth();
-  console.log(cart)
+  const navigate = useNavigate();
+
+  async function sendOrder(info) {
+    try {
+      await axios.post('http://localhost:3001/orders', { product: info, user: auth.user?.name });
+      clearCart();
+      Swal.fire({
+        title: "Buen trabajo!",
+        text: "El pedido ha sido enviado correctamente!",
+        icon: "success",
+      });
+      navigate('/');
+    } catch (error) {
+      Swal.fire("Error!", "Ya tienes un pedido en curso", "error")
+    }
+  }
+  
   return (
     <div className='cart '>
       {cart.length > 0 && auth.user &&
@@ -49,8 +67,9 @@ const YourCart = () => {
               </tr>
             </tbody>
           </Table>
-          <div>
+          <div className='d-flex justify-content-between'>
             <Button variant='danger' className='m-3' onClick={() => clearCart()}>Limpiar carrito</Button>
+            <Button variant='success' className='m-3' onClick={() => sendOrder(cart)}>Hacer Pedido</Button>
           </div>
         </>}
       {!auth.user && <p className='text-center'>Inicia sesión a través de la página de <Link className='link px-2 pb-1' to="/login">login</Link> y vuelve a intentarlo</p>}

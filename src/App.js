@@ -7,8 +7,7 @@ import { Home } from './pages/Home/Home';
 import { Error } from './pages/Error/Error'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
-
-
+import { OrderAdmin } from './pages/OrderAdmin/OrderAdmin';
 import { Carta } from './pages/Carta/Carta';
 import { Login } from './pages/Login/Login';
 import { PedirComida } from './pages/PedirComida/PedirComida'
@@ -50,6 +49,7 @@ function App() {
                 <Route path='/about' element={<About />} />
                 <Route path="/productadmin" element={<AdminRoute><ToDoProd /> </AdminRoute>} />
                 <Route path='/useradmin' element={<AdminRoute> <UserAdmin /> </AdminRoute>} />
+                <Route path="/orderadmin" element={<AdminRoute><OrderAdmin /> </AdminRoute>} />
                 <Route path='/your-cart' element={<YourCart />} />
               </Routes>
               <Footer />

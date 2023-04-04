@@ -43,6 +43,7 @@ export const Sidebar = () => {
                     <Dropdown.Item href="/your-cart">Mis Pedidos</Dropdown.Item>
                     {auth.user.role === 'admin' && <Dropdown.Item href='/productadmin'>Admin de Productos</Dropdown.Item>}
                     {auth.user.role === 'admin' && <Dropdown.Item href='/useradmin'>Admin de Usuarios</Dropdown.Item>}
+                    {auth.user.role === 'admin' && <Dropdown.Item href='/orderadmin'>Admin de Pedidos</Dropdown.Item>}
                     <Dropdown.Item onClick={logout} href='/'>Cerrar Sesión</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
