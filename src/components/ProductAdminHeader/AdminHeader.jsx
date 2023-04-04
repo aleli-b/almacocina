@@ -23,7 +23,7 @@ export const AdminHeader = ({ sendProduct }) => {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>Agregar Producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSubmit(sendProduct)}>
@@ -47,7 +47,7 @@ export const AdminHeader = ({ sendProduct }) => {
                             <label htmlFor="exampleInputText">Info</label>
                             <textarea className="form-control" id="exampleInputTextarea" aria-describedby="nameText" placeholder="Más Información" {...register("info", { required: true, minLength: 30 })} /> {errors.info && <p>Error en la info</p>}
                         </div>                        
-                        <button type="submit" className="btn btn-primary">Submit</button>                        
+                        <button type="submit" className="btn btn-primary">Agregar</button>                        
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

@@ -23,7 +23,7 @@ export const EditProductHeader = ({ product, editProducts }) => {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>Editar Producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSubmit(editProductLocal)}>
@@ -47,7 +47,7 @@ export const EditProductHeader = ({ product, editProducts }) => {
                             <label htmlFor="exampleInputText">Info</label>
                             <textarea defaultValue={product.info} className="form-control" id="exampleInputTextarea" aria-describedby="nameText" placeholder="Más Información" {...register("info", { required: true, minLength: 30 })} /> {errors.info && <p>Error en la info</p>}
                         </div>                        
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Guardar</button>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

@@ -1,53 +1,60 @@
 import React, { useState, useEffect } from 'react';
+
 import '../../styles/Carta.css';
 import { BsFillCartFill } from "react-icons/bs"
-import { Button, Card, Container, Row, Col, Fade } from 'react-bootstrap';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useCart } from '../context/Cart';
 import { useAuth } from '../context/AuthContext';
-
+import ModalInfoCArd from '../ModalInfoCArd/ModalInfoCArd';
 export const MenuCards = () => {
     const { addProduct } = useCart();
-    const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]);
     useEffect(() => { getProducts() }, []);
     const auth = useAuth();
 
-    const handleClick = (id) => {
-        setOpen(open => ({
-            ...open,
-            [id]: !open[id],
-        }))
-    }
+    // const handleClick = (id) => {
+    //     setOpen(open => ({
+    //         ...open,
+    //         [id]: !open[id],
+    //     }))
+    // }
 
     async function getProducts() {
         const users = await axios.get('http://localhost:3001/products');
         setProducts(users.data);
-    }
+    };
+    
 
     return (
+    <>
         <div>
+                  <Container>
+        <h1 className=" display-4  text-danger  text-center">
+          {' '}
+          Nuestra Carta
+        </h1>
+        <hr />
+
+        <h5 className="text-center p-4 fst-italic ">
+          "Garantía en el mundo de la gastronomia, con el mejor servicio"
+        </h5>
+      </Container>
             <Container fluid>
                 <Row>
                     <Col lg={12} md={6} className="d-flex flex-row flex-wrap justify-content-center gap-3">
-                        {
-                            products.map(product => (
-                                <Card style={{ width: '18rem' }} key={product._id} className="menuCard">
-                                    <Card.Img variant="top" src={product.url} className="cardImg" />
-                                    <Card.Body className='cardBody'>
+                            {products.map(product => (
+                                <Card style={{ width: '18rem' }} key={product._id} className="menuCard ">
+                                    <Card.Img variant="top" src={product.url} className="cardImg shadow" />
+                                    <Card.Body className='cardBody shadow'>
                                         <Card.Title>{product.name}</Card.Title>
                                         <Card.Text>
-                                            {product.description}
+                                            <h4>${product.price}</h4>
                                         </Card.Text>
-                                        <Container fluid className='d-flex justify-content-between mb-2'>
-                                            <Button
-                                                onClick={() => handleClick(product._id)}
-                                                aria-controls="example-fade-text"
-                                                aria-expanded={open[product._id]}
-                                                className="cardButton"
-                                            >
-                                                + info
-                                            </Button>
+                                        <Container fluid className='d-flex justify-content-between '>
+                                            <ModalInfoCArd product={product}>
+
+                                            </ModalInfoCArd>
                                             {auth.user
                                                 ?
                                                 <Button className='cardButton' onClick={() => addProduct(product)}>
@@ -58,22 +65,27 @@ export const MenuCards = () => {
                                                     <BsFillCartFill />
                                                 </Button>}                                        
                                         </Container>
-                                        <div style={{ minHeight: '150px' }}>
-                                            <Fade in={open[product._id]} dimension="width">
-                                                <div id="example-fade-text">
-                                                    <Card body >
-                                                        {product.info}
-                                                    </Card>
-                                                </div>
-                                            </Fade>
-                                        </div>
                                     </Card.Body>
-                                </Card>
-                            ))
-                        }
+                                  </Card>
+                                
+                            )  )}
                     </Col>
                 </Row>
             </Container>
         </div>
+        
+          </>
     )
+
+         
+            
+             
+            
+
+
 }
+
+export default MenuCards;
+
+
+

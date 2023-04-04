@@ -5,6 +5,9 @@ import { Footer } from './layout/Footer/Footer';
 import { Header } from './layout/Header/Header';
 import { Home } from './pages/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+
+
 import { Carta } from './pages/Carta/Carta';
 import { Login } from './pages/Login/Login';
 import { PedirComida } from './pages/PedirComida/PedirComida'
