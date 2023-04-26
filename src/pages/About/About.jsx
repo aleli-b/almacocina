@@ -1,9 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../../styles/Hover.css' //import '../../styles/Login.css'
-// import { FiInstagram, FiTwitter } from 'react-icons/fi'
-// import { RiFacebookBoxLine } from 'react-icons/ri'
-// import { LinksFooter } from '../../components/LinksFooter/LinksFooter';
 import { Redes } from '../../components/Redes/Redes';
 const imgAbout = require.context('../../assets/img/aboutImg', true);
 
